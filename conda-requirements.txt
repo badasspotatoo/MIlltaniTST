@@ -1,0 +1,4 @@
+intel-openmp==2021.1.1
+mkl==2021.1.1
+mkl-service==2.3.0
+tbb==2021.1.1
