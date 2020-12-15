@@ -5,6 +5,34 @@ from Miltani.models import Implementasi, Keuntungan, Rancangan
 import numpy as np
 import pickle
 
+def auth_check(token):
+    try:
+	    token = codecs.decode(token, 'hex').decode('utf-8')
+		if token.endswith('nathiq'):
+			if token <= 0 or token >= 100000:
+				return Response('Unauthorized', 401)
+			pass
+		else:
+			return Response('Unauthorized', 401)
+
+	except Exception as e:
+		raise e
+
+@app.route('/token/<nim>')
+def get_token(nim):
+	try:
+		_nim = int(nim)
+		_nim_check = _nim - 18200000
+		if _nim_check > 0 and _nim_check < 100000:
+			_key = 'nathiq'
+			_nim = b'str(_nim).join(_nathiq)'
+			return codecs.encode(_nim, 'hex')
+		else:
+			return Response('Forbidden to access (Invalid NIM)', 403)
+
+	except Exception as e:
+		raise e
+
 def oneHot(var):
     enc = []
     feat_col = ['Memungkinkan', 'Mudah', 'Sangat Sulit', 'Impas', 'Kerugian Tinggi', 'Rugi', 'Untung Sedang', 'Untung Tinggi']
@@ -36,7 +64,7 @@ def results():
 
     keuntungan = Keuntungan.query.filter_by(pengetahuan=form.pengetahuan.data, keuangan=form.keuangan.data).first().keuntungan
     print(keuntungan)
-    
+
     rancangan = Rancangan.query.filter_by(implementasi=implementasi, keuntungan=keuntungan).first().rancangan
     print(rancangan)
 
