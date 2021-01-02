@@ -15,5 +15,5 @@ COPY . /app
 
 ENTRYPOINT [ "python3.8" ]
 
-CMD [ "main-local.py" ]
+CMD [ "app.py" ]
 
