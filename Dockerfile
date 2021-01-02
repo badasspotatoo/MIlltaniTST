@@ -17,5 +17,3 @@ ENTRYPOINT [ "python3.8" ]
 
 CMD [ "main-local.py" ]
 
-# docker build -t digital-newspaper:latest .
-# docker run -d -p 5000:5000 digital-newspaper (running on http://0.0.0.0:5000)
